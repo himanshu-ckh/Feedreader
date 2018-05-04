@@ -73,10 +73,11 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('The menu changes visibility on click', function(){
-            $('a.menu-icon-link').click();
+            var menu = document.querySelector(".menu-icon-link");
+            menu.click();
             expect(document.body.classList.contains('menu-hidden')).toBe(false);
 
-            $('a.menu-icon-link').click();
+            menu.click();
             expect(document.body.classList.contains('menu-hidden')).toBe(true);
         });
     });
@@ -95,34 +96,33 @@ $(function() {
         });
 
         it('When loadFeed completes its work there is atleast a single entry within the feed container', function(){
-            expect($('.feed .entry').length).toBeGreaterThan(0);
+            var en = document.getElementsByClassName("feed", "entry");
+            expect(en.length).toBeGreaterThan(0);
         });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
         var oldFeed;
-        var newFeed;
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        beforeEach(function(done){
-            loadFeed(0, function(){
-                oldFeed = $('.feed').html();
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                oldFeed = document.querySelector(".feed").innerHTML;
 
-                loadFeed(1, function(){
-                    newFeed = $('.feed').html();
+                loadFeed(1, function() {
                     done();
                 });
             });
         });
 
-        it('when a new feed is loaded by the loadFeed function that the content actually changes', function(){
-            expect(oldFeed).not.toEqual(newFeed);
+        it('When new feed is loaded the contecnt actually changes', function(done) {
+            var newFeed = document.querySelector(".feed").innerHTML;
+            expect(oldFeed===newFeed).toBe(false);
+            done();
         });
-
     });
-
 }());
