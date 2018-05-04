@@ -34,7 +34,7 @@ $(function() {
          * and that the URL is not empty.
          */
         it('URL is defined in allFeeds and the URL is not Empty', function(){
-            for(var i=0; i<allFeedsLen; i++){
+            for(let i=0; i<allFeedsLen; i++){
                 expect(allFeeds[i].url).toBeDefined();
                 var urlLen = allFeeds[i].url.length;
                 expect(urlLen).toBeGreaterThan(0);
@@ -47,7 +47,7 @@ $(function() {
          * and that the name is not empty.
          */
         it('Name is defined in allFeeds and the name is not Empty', function(){
-            for(var i=0; i<allFeedsLen; i++){
+            for(let i=0; i<allFeedsLen; i++){
                 expect(allFeeds[i].name).toBeDefined();
                 var nameLen = allFeeds[i].name.length;
                 expect(nameLen).toBeGreaterThan(0);
