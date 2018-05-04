@@ -104,7 +104,7 @@ $(function() {
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
         var oldFeed;
-
+        var newFeed
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -120,7 +120,7 @@ $(function() {
         });
 
         it('When new feed is loaded the contecnt actually changes', function(done) {
-            var newFeed = document.querySelector(".feed").innerHTML;
+            newFeed = document.querySelector(".feed").innerHTML;
             expect(oldFeed===newFeed).toBe(false);
             done();
         });
